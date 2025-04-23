@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 
 class OrientationFragment : Fragment(), SensorEventListener {
 
+    private lateinit var sensorNameTextView: TextView
     private lateinit var orientationTextView: TextView
     private lateinit var sensorManager: SensorManager
     private var orientationSensor: Sensor? = null
@@ -24,13 +25,19 @@ class OrientationFragment : Fragment(), SensorEventListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        orientationTextView = view.findViewById(R.id.orientationTextView)
         sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         orientationSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION)
+
+        sensorNameTextView = view.findViewById(R.id.sensorOrientNameTextView)
+        orientationTextView = view.findViewById(R.id.orientationTextView) // Додай оце
+
         if (orientationSensor == null) {
-            orientationTextView.text = "Orientation sensor not found"
+            sensorNameTextView.text = "Orientation sensor not found"
+        } else {
+            sensorNameTextView.text = "Orientation sensor: ${orientationSensor?.name}"
         }
     }
+
 
     override fun onResume() {
         super.onResume()

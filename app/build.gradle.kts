@@ -60,4 +60,5 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.cardview:cardview:1.0.0")
 }

@@ -26,7 +26,7 @@ class LightFragment : Fragment(), SensorEventListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lightLevelTextView = view.findViewById(R.id.lightLevelTextView)
-        sensorNameTextView = view.findViewById(R.id.sensorNameTextView)
+        sensorNameTextView = view.findViewById(R.id.sensorLightNameTextView)
 
         sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
