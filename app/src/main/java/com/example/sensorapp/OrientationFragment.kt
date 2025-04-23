@@ -29,7 +29,7 @@ class OrientationFragment : Fragment(), SensorEventListener {
         orientationSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION)
 
         sensorNameTextView = view.findViewById(R.id.sensorOrientNameTextView)
-        orientationTextView = view.findViewById(R.id.orientationTextView) // Додай оце
+        orientationTextView = view.findViewById(R.id.orientationTextView)
 
         if (orientationSensor == null) {
             sensorNameTextView.text = "Orientation sensor not found"
