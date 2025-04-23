@@ -53,10 +53,18 @@ class OrientationFragment : Fragment(), SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent?) {
         if (event?.sensor?.type == Sensor.TYPE_ORIENTATION) {
-            val azimuth = event.values[0]
-            val pitch = event.values[1]
-            val roll = event.values[2]
-            orientationTextView.text = "Azimuth: $azimuth°\nTilt angle: $pitch°\nRotation: $roll°"
+            val azimuthRad = event.values[0]
+            val pitchRad = event.values[1]
+            val rollRad = event.values[2]
+
+            val azimuthDeg = Math.toDegrees(azimuthRad.toDouble()).toFloat()
+            val pitchDeg = Math.toDegrees(pitchRad.toDouble()).toFloat()
+            val rollDeg = Math.toDegrees(rollRad.toDouble()).toFloat()
+
+            orientationTextView.text = String.format(
+                "Azimuth: %.2f°\nTilt angle: %.2f°\nRotation: %.2f°",
+                azimuthDeg, pitchDeg, rollDeg
+            )
         }
     }
 
